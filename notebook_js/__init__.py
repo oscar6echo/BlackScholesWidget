@@ -2,11 +2,22 @@
 import os
 from IPython.display import display, HTML
 
+def build_html(name):
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+
+    fn = os.path.join(dir_path, name+'.html')
+    with open(fn, 'r') as f:
+        html = f.read()
+
+    fn = os.path.join(dir_path, name+'.js')
+    with open(fn, 'r') as f:
+        js = '<script>' + f.read() + '</script>'
+
+    return html + js
+
 
 def toggle_code_cells(init='Show'):
     """init = Show or Hide"""
-
-    dir_path = os.path.dirname(os.path.realpath(__file__))
 
     if init == 'Show':
         name = 'toggle_code_cells_init_show'
@@ -15,64 +26,32 @@ def toggle_code_cells(init='Show'):
     else:
         raise('Wrong init')
 
-    fn = os.path.join(dir_path, name+'.html')
-    with open(fn, 'r') as f:
-        html = f.read()
-
-    fn = os.path.join(dir_path, name+'.js')
-    with open(fn, 'r') as f:
-        js = '<script>' + f.read() + '</script>'
-
-    display(HTML(html+js))
+    contents = build_html(name)
+    display(HTML(contents))
 
 
 def restart_kernel():
-
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-
     name = 'restart_kernel'
+    contents = build_html(name)
+    display(HTML(contents))
 
-    fn = os.path.join(dir_path, name+'.html')
-    with open(fn, 'r') as f:
-        html = f.read()
-
-    fn = os.path.join(dir_path, name+'.js')
-    with open(fn, 'r') as f:
-        js = '<script>' + f.read() + '</script>'
-
-    display(HTML(html+js))
 
 
 def run_all_cells():
-
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-
     name = 'run_all_cells'
-
-    fn = os.path.join(dir_path, name+'.html')
-    with open(fn, 'r') as f:
-        html = f.read()
-
-    fn = os.path.join(dir_path, name+'.js')
-    with open(fn, 'r') as f:
-        js = '<script>' + f.read() + '</script>'
-
-    display(HTML(html+js))
+    contents = build_html(name)
+    display(HTML(contents))
 
 
 def init_notebook():
-
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-
     name = 'init_notebook'
+    contents = build_html(name)
+    display(HTML(contents))
 
-    fn = os.path.join(dir_path, name+'.html')
-    with open(fn, 'r') as f:
-        html = f.read()
 
-    fn = os.path.join(dir_path, name+'.js')
-    with open(fn, 'r') as f:
-        js = '<script>' + f.read() + '</script>'
+def jupyter_credit():
+    name = 'jupyter_credit'
+    contents = build_html(name)
+    display(HTML(contents))
 
-    display(HTML(html+js))
 

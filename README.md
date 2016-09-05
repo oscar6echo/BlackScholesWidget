@@ -26,5 +26,5 @@ For ipywidgets follow [these instructions](https://ipywidgets.readthedocs.io/en/
 
 ## Python version
 
-For now it only works with Python 2 (because of some parasite old print statements in ezhc and ezvis3d - that I'll correct soon).
+For now it only works with Python 2 (because of some parasite print statements in ezhc and ezvis3d - that I'll correct soon).
 

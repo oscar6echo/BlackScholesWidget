@@ -13,11 +13,11 @@ import pyperclip
 import ezhc as hc
 import ezvis3d as v3d
 
-import custom_widgets as cw
-from blackscholes_pricer import Price_Call, Price_Put
+from .custom_widgets_2 import load_js_extensions, NumberInputWidget
+from .blackscholes_pricer import Price_Call, Price_Put
 
 
-cw.load_js_extensions()
+load_js_extensions()
 
 
 
@@ -92,7 +92,7 @@ def to_int(s): return int(s[:-2]) if len(s)>2 else None
 def build_Number(data, width, border=None):
     description = data['label']
     value = data['value']
-    w = cw.NumberInputWidget(description=description, value=value, width=to_px(width))
+    w = NumberInputWidget(description=description, value=value, width=to_px(width))
     if 'min' in data:
         w.min = data['min']
     if 'max' in data:
